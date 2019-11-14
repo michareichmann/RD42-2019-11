@@ -1,0 +1,83 @@
+\section{Results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tracking Resolution}
+\begin{frame}{Tracking Resolution}
+
+	\subfigs{\subfig[.4]{.5}[r]{TR}}{\subfig[.55]{.33}{TelSchematics3}}
+	
+	\begin{itemize}\itemfill
+		\item ROC = Plane
+		\item resolution = width of the residual distribution at the plane under test
+		\item can achieve \SI{\sim20}{\micro\meter} resolution at very low $\upchi^2$
+		\item resolution at the front slightly better than in the back
+		\begin{itemize}
+			\item less multiple scattering
+		\end{itemize}
+% 		\item choose \SI{90}{\%} quantile to have a large number of events
+
+	\end{itemize}
+		
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Rate Measurements}
+\begin{frame}{S129}
+
+	\vspace*{-2ex}
+	\only<1>{\fig[r]{.5}{S129EvoF}}
+	\only<2>{\fig[r]{.5}{S129EvoZ}}
+	\only<3>{\fig[r]{.5}{S129STD}}\vspace*{-1ex}
+	
+	\begin{itemize}\itemfill
+		\item<1-> every point the mean of a whole rate scan
+		\item<1-> very high points have no attenuator
+		\item<1-> first two points have a change in amplifier
+		\item<2-> most points very stable over time but some fluctuate (maybe DRS4 issue)
+		\item<3-> standard deviation in general below \SI{.5}{\%}
+	\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{B2 Rate Scans}
+
+	\begin{minipage}[c][.7\textheight]{.34\textwidth}
+		\begin{itemize}\itemfill
+			\item after irradiation pulse height is very stable
+			\item maximum irradiation: \SI{8e15}{\ncm}
+			\item little drop for high rates at high irradiations 
+			\item \ra due to decreasing signals one cut is working less efficient
+			\item<2> positive and negative bias agree very well
+		\end{itemize}
+	\end{minipage}\hfill
+	\begin{minipage}{.63\textwidth}
+		\only<1>{\fig{.8}{B2All}}
+		\only<2>{\fig{.8}{B2AllP}}
+	\end{minipage}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{B2 Pulse Height Evolution}
+
+	\vspace*{-3ex}
+	\fig[r]{.6}{B2M}
+
+	\def\d{\hspace*{1ex}}
+	\hspace*{17ex} 0 \d\ra\d \SI{5e14}{} \d\ra\d \SI{1e15}{} \d\ra\d \SI{2e15}{} \ra \SI{4e15}{} \ra \SI{8e15}{\ncm}\vspace*{3ex}
+	\begin{itemize}\itemfill
+		\item absolute pulse height decreases exponentially
+		\item SNR at highest irradiation only 2/1 \ra prevents next step with this amplifier \ra use new OSU amp?
+	\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%% FRAME 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Fix Rate Dependence}
+
+	\subfigs{\subfig{.5}[r]{PHB}[First measurement]}{\subfig{.5}[r]{PHB2}[After reprocessing]}
+	
+	\begin{itemize}\itemfill
+		\item less than \SI{20}{\%} of the tested diamonds show rate dependence \SI{>10}{\%}
+		\item very large rate dependence at the first measurement (\SI{>90}{\%})
+		\item after reprocessing and surface cleaning with RIE very stable behaviour (\SI{\sim2}{\%})
+		\item feasible to ``fix'' bad diamonds
+	\end{itemize}
+
+\end{frame}

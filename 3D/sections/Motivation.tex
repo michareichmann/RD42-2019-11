@@ -1,0 +1,90 @@
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Motivation}
+\begin{frame}{Diamond as Detector Material}
+
+	\begin{itemize}\itemfill
+		\item innermost tracking layers \ra highest radiation damage \orderof{\SI{}{\giga\hertz\per\centi\meter^2}}
+% 		\item current detectors is designed to survive \SI{\sim12}{month} in High-Luminosity LHC
+		\item \fat{\ra R\&D towards more radiation tolerant detector designs and/or materials}
+	\end{itemize}\vspace*{2ex}
+	
+	\uncover<2->{
+		\textbf{\underline{Diamond as Detector Material:}}\vspace*{5pt}
+		\begin{itemize}\itemfill
+			\item advantageous properties 
+			\item \good{after \SI{1e16}{\ncm} the mean drift path in diamond larger than in silicon}
+		\end{itemize}\vspace*{2ex}}
+	
+	\uncover<3->{
+		\vspace*{5pt}\textbf{\underline{Work at ETH:}}\vspace*{5pt}
+		\begin{itemize}
+			\item investigate signals and radiation tolerance in various detector designs:\vspace*{5pt}
+				\begin{itemize}\itemfill
+							\alt<3>{
+								\item Pad Detectors \ra whole diamond as single cell readout
+								\item Pixel Detectors \ra diamond sensor on pixel readout chip
+								\item 3D Pixel Detectors \ra 3D diamond detector on pixel readout chip}
+								{
+								\item \fadeout{Pad Detectors}
+								\item \fadeout{Pixel Detectors}
+								\item \good{3D Pixel Detectors} \ra this talk\vspace*{1.45pt}}
+				\end{itemize}
+		\end{itemize}}
+		\pause[4]
+		
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Detectors}
+\begin{frame}{Detectors}
+
+	\nicetab{lcc}{ 			& \good{II6-A2}								& \good{II6-B6}								\\\hline
+			manufacturer 		& II-VI Inc.									& II-VI Inc.									\\
+			diamond type 		& poly-crystal								& poly-crystal								\\
+			size		 				& \SI{\sim4x4}{\milli\meter}	& \SI{\sim4x4}{\milli\meter}	\\
+			thickness	 			& \SI{\sim500}{\micro\meter}	& \SI{455}{\micro\meter}			\\
+			irradiation			& none												& none												\\
+			construction 		& summer 2016									& summer 2017									\\
+			3D drilling 		& Oxford											& Oxford											\\
+			\good{3D cell size}	& \good{\SI{150x100}{\micro\meter}}	& \good{\SI{50x50}{\micro\meter}}	\\
+			\good{columns}	& \good{\SI{20x30}{} (600)}		& \good{\SI{60x62}{} (3720)}	\\
+			pixel chip	 		& PSI46digV2.1respin (CMS)		& PSI46digV2.1respin (CMS)		\\
+			pixel pitch	 		& \SI{150x100}{\micro\meter}	& \SI{150x100}{\micro\meter}	\\
+			ganged cells	 	& none												& \SI{2x3}{} (6 cells)				\\
+			bump \& wire bonding& Princeton								& Princeton										\\
+			}[3D Pixel Detector Properties.]\vspace*{-10pt}
+	
+	\uncover<2->{
+		\begin{itemize}\itemfill
+			\item II6-A2 broke in October 2016 (chip malfunctioned) \ra successful re-bonding
+			\item II6-B6 has long history of breaking ...
+		\end{itemize}\vspace*{10pt}}\vspace*{-10pt}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%% FRAME 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Measurements}
+
+	\vspace*{-2ex}
+	\nicetab{lcccccc}{& \textbf{Oct 16}	& \textbf{May 17}	& \textbf{Aug 17}	& \textbf{Sep 18}	& \textbf{Oct 18}	& \textbf{Oct 18} \\\hline
+			place 						& PSI			& PSI			& PSI			& CERN		& CERN		& PSI			\\
+			\good{II6-A2} 		& \cmark	& \cmark	& \cmark	& \cmark	& \cmark	& \cmark	\\
+			\good{II6-B6} 		& \xmark	& \xmark	& \cmark	& \xmark	& \cmark	& \cmark	\\
+			}[3D Pixel Detector Measurements.]\vspace*{-3ex}
+		
+	\begin{itemize}\itemfill
+		\item at PSI: scanning particle rate, bias voltage, rise time and incident angle
+		\item at CERN: high resolution studies at different voltages
+	\end{itemize}\vspace*{1ex}
+
+	\uncover<2->{
+		\textbf{\underline{History of II6-B2:}}
+		\begin{itemize}\itemfill
+			\item 06/2017 - sensor processing and detector fabrication 
+			\item 08/2017 - first measurement \ra high efficiency \ra pedestal in pulse height
+			\item 04/2018 - several pixels malfunction \ra re-bump-bonding to new chip
+			\item 06/2018 - sensor detaches while shipping \ra re-bump-bonding, fixate with silguard
+            \item 10/2018 - at PSI: efficiency worsens and sensor detaches again
+			\item 11/2019 - reprocessing and new bump bonding
+		\end{itemize}\vspace*{10pt}}\vspace*{-10pt}
+	
+\end{frame}

@@ -1,0 +1,213 @@
+\section*{Backup}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Timing Correction}
+\begin{frame}[noframenumbering]{Ringbuffer}
+
+	\subfigs{\subfig{.5}{ringbuffer}[Ringbuffer]}{\subfig{.5}[r]{TCAL}[Length of memory cells.]}
+	
+	\begin{itemize}\itemfill
+		\item analogue signals of the diamonds constantly digitised and saved in ringbuffer
+		\item overwrite old data once again at first cell
+		\item once triggered data is saved starting from the current cell \ra trigger cell
+		\item measure the length the of memory cells of the DRS4 (before every beam test)
+		\item record trigger cell for every event
+	\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{Peak Position}
+
+	\subfigs{\subfig{.5}[r]{PeakPos}[no correction]}{\subfig{.5}[r]{PeakPos10}[with correction]}
+	
+	\begin{itemize}\itemfill
+		\item timing of the signals should be fixed and determined by the scintillator
+		\item non-corrected peak time distribution resembles cell size distribution
+		\item correcting for the different cell sizes \ra strong improvement in timing
+	\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{Fine Correction}
+
+	\subfigs{\subfig{.5}[r]{PeakTC}[Dependence on trigger cell.]}{\subfig{.5}[r]{FineCorr}[fine correction]}
+	
+	\begin{itemize}\itemfill
+		\item after drs4 time correction \ra still timing depends periodically on the trigger cell (why?)
+		\item fit with periodic function with known period 
+	\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{Timing Correction + Cut}
+
+	\subfigs{\subfig{.5}[r]{TCor}[All corrections]}{\subfig{.5}[r]{TCorFit}[Timing cut]}
+	
+	\begin{itemize}\itemfill
+		\item achieve \SI{\sim500}{\pico\second} timing resolution
+		\item exclude signals outside \SI{3}{\sigma}) of this distribution
+		\begin{itemize}
+			\item wrong timing means something went wrong in the data-taking or the waveform is bad
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bucket Cut}
+\begin{frame}[noframenumbering]{Origin}
+
+	\only<1>{\fig{.5}{Bucket}}
+	\only<2>{\fig{.5}{bucketwf}}
+	
+	\begin{itemize}\itemfill
+		\item bunch spacing of PSI (\SI{19.7}{\nano\second}) small than clock cycle of fast-OR (\SI{25}{\nano\second})
+		\item scintillator area \SI{\sim10}{times} larger than active trigger area
+		\item within one clock cycle of \SI{25}{\nano\second}:
+		\begin{itemize}
+			\item \bad{one particle only hits the scintillator}
+			\item \good{second particle hits the telescope and the diamond}
+		\end{itemize}
+		\item \ra no signal in signal region!
+	\end{itemize}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{Bucket Pedestal}
+
+	\fig[r]{.5}{Bucket1}
+	
+	\begin{itemize}\itemfill
+		\item flat lines only when the highest peak is in the bunch after the trigger
+	\end{itemize}
+		
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{Bucket Cut}
+
+	\vspace*{-15pt}\fig[r]{.7}{Bucket2}
+	
+	\begin{itemize}\itemfill
+		\item fit signal distribution when signal in the bunch after the trigger is higher
+		\item signal and background well separated
+		\item shift threshold and minimise the error on the signal
+	\end{itemize}
+		
+\end{frame}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Event Selection}
+\begin{frame}[noframenumbering]{Saturated}
+
+	\fig[r]{.4}{sat}
+
+	\begin{itemize}\itemfill
+		\item DRS4 signal range: [-500, +500]\, mV
+		\item exclude saturated waveforms \ra full pulse height information lost
+		\item main source should be protons
+		\item 17/200000 events in example above
+	\end{itemize}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{Pulser}
+
+	\only<1>{\fig[r]{.4}{PW}}
+	\only<2>{\fig[r]{.4}{pul}}
+
+	\begin{itemize}\itemfill
+		\item<1-> use pulser as a reference signal
+		\item<1-> tag pulser events by extra channel of the DRS4
+		\item<2-> exclude these event since they don't have a diamond signal
+		\item<2-> use for pulser analysis to compare to diamond signal
+	\end{itemize}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{Event Range}
+	
+	\vspace*{-10pt}\fig[r]{.5}{ER}
+
+	\begin{itemize}\itemfill
+		\item until October 2015 \ra beam shutter opened after run was started
+		\begin{itemize}
+			\item unstable conditions
+			\item exclude first five minutes of the run\vspace*{5pt}
+		\end{itemize}
+		\item past October 2015 exclude first minute as safety margin
+		\begin{itemize}
+			\item sometimes small adjustments made (e.g. collimator changed too late)
+		\end{itemize}
+
+	\end{itemize}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{Beam Interruption}
+	
+	\only<1>{\fig[r]{.4}{FP}}
+	\only<2>{\fig[r]{.4}{FP1}}
+
+	\begin{itemize}\itemfill
+		\item<1-> usually short beam interruption every \SI{5}{\minute} at PSI + other interruption
+		\item<2-> particle rate slowly ramps up after interruption
+		\item<2-> exclude events when rate drops less than \SI{40}{\%} + \SI{5}{\second} before
+		\item<2->  until rate is larger than \SI{40}{\%} + \SI{20}{\second} after this
+		\item<2-> let pulse height adjust after beam interruption (safety margin)
+	\end{itemize}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{Tracks}
+	
+	\fig[r]{.6}{OCs}
+
+	\begin{itemize}\itemfill
+		\item only use events with exactly one track
+		\item require one and only one cluster per plane
+	\end{itemize}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{Pedestal Sigma}
+	
+	\subfigs{\subfig{.5}[r]{PD}}{\subfig{.5}[r]{PDL}}
+
+	\begin{itemize}\itemfill
+		\item exclude pedestals outside the 3 sigma region
+		\item baseline shifts
+		\item bad waveforms
+	\end{itemize}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{$\upchi^2$}
+
+	\subfigs{\subfig{.5}[r]{ChiX}}{\subfig{.5}[r]{ChiY}}
+	
+	\begin{itemize}\itemfill
+		\item exclude the bad tracks
+	\end{itemize}
+		
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{Tracking Angle}
+
+	\only<1>{\subfigs{\subfig{.5}[r]{TAX1}}{\subfig{.5}[r]{TAY1}}}
+	\only<2>{\subfigs{\subfig{.5}[r]{TAX}}{\subfig{.5}[r]{TAY}}}
+	
+	\begin{itemize}\itemfill
+		\item only accept tracks with small angles
+		\item<2-> angle only very slightly changes with rate
+	\end{itemize}
+		
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 13 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering]{Fiducial Cut}
+
+	\subfigs{\subfig{.5}[r]{fid}}{\subfig{.5}[r]{fid1}}
+	
+	\begin{itemize}\itemfill
+		\item select area of the diamond
+		\item find first and last bin when signal drops lower than \SI{93}{\%} of the maximum value
+		\item interpolate with the adjacent bins when threshold is exactly hit
+		\item adjust manually if it fails or still pedestal left
+	\end{itemize}
+		
+\end{frame}

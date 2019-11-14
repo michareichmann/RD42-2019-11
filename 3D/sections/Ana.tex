@@ -1,0 +1,32 @@
+\section{Analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Event Cuts}
+\begin{frame}{Cuts}
+
+	\nicetab{ll}{ \good{Cut} & \good{Excluded Events} 														\\\hline
+	event range					& first minute of the run due to various beam conditions 	\\
+	beam interruptions	& during rate changes of the beam due to beam interruption\\
+	aligned 						& DUT and Telescope are not aligned (event-wise)					\\
+	trigger phase				& Chip trigger timing is incorrect 												\\
+	tracks							& not all telescope planes have exactly one cluster				\\
+	chi2 (x/y)					& badly fit tracks (\SI{>50}{\%\, quantile})							\\
+	track slope (x/y)		& large angles of the tracks (\SI{>2}{deg})								\\
+	rhit								& large DUT residual (\SI{>100}{\milli\meter})						\\
+	pixel mask					& noisy pixels																						\\
+	fiducial						& not in selected (fiducial) area of the DUT							\\
+	}[Analysis cut flow.]\vspace*{-6ex}
+	
+	\begin{minipage}{.6\textwidth}
+		\begin{itemize}
+			\item cuts applied in order of the table
+			\item largest contribution usually by chi2, tracks and fiducial cuts
+		\end{itemize}
+	\end{minipage}\hfill
+	\begin{minipage}{.3\textwidth}
+		\fig[r]{.38}{CutPie}
+	\end{minipage}
+
+
+
+	
+\end{frame}

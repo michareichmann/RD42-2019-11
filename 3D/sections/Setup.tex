@@ -1,0 +1,28 @@
+\section{Setup at PSI}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Telescope}
+\begin{frame}{Pixel Telescope}
+
+	\fig{.48}{3DTel}[modular ETH beam telescope in pixel configuration]
+	
+	\begin{itemize}\itemfill
+		\item 4 tracking planes \ra trigger (fast-OR) \ra adjustable area (max \SI{8x7.8}{\milli\meter})
+		\item up to 3 DUT planes (any digital pixel detector)
+		\item scintillator for precise trigger timing \ra \orderof{\SI{1}{\nano\second}}
+	\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Schematics}
+\begin{frame}{Schematic Setup}
+
+	\vspace*{-2ex}\fig{.55}{TelSchematicsDig}
+	
+	\begin{itemize}\itemfill
+		\item independent telescope module for DUTs (dark green)
+		\item scintillator \ra precise trigger timing of \orderof{\SI{1}{\nano\second}}
+		\item Trigger Unit (TU) \ra strongly simplifying setup
+		\item global trigger \ra (Plane 1 AND Plane 2) AND Scintillator
+	\end{itemize}
+	
+\end{frame}

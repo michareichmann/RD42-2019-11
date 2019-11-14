@@ -1,0 +1,135 @@
+\section{Analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Alignment}
+\begin{frame}{Alignment}
+
+	\only<1>{\fig{.4}{PA}}
+	\only<2>{\fig{.4}{FA}}
+
+	\begin{itemize}\itemfill
+		\item<1-> assume the same error for all planes: $\frac{2.5}{\sqrt{12}}\,\cdot$ pixel dimension
+		\item<1-> set errors of p1 to 0 (anchor \ra remains untouched)
+		\item<1-> first coarse \textbf{pre-alignment} by connecting the outer planes with a straight line
+		\begin{itemize}
+			\item<1-> move inner planes by mean of the residual distribution\vspace*{5pt}
+		\end{itemize}
+		\item<2->then \textbf{fine alignment} by fitting a straight line through all planes
+		\begin{itemize}
+			\item<2-> keep p1 fixed and iteratively translate and rotate the other planes according to residuals 
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Individual Plane Errors}
+\begin{frame}{Theoretical Distribution}
+
+	\textbf{\underline{Chi-squared distribution:}}
+	\begin{equation*}
+		\frac{1}{2^{k/2}\Gamma\left(k/2\right)}x^{k/2-1}e^{-x/2}
+	\end{equation*}
+	
+	\fig{.5}{Chi2-1}
+
+	\begin{itemize}\itemfill
+		\item k = degrees of freedom
+		\item special case of Gamma-Distribution % with $k = k/2$ and an scale parameter $\theta = 2$
+		\item theoretical distribution of the $\upchi^2$ from the track fits fully known
+	\end{itemize}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Distribution after Alignment}
+
+	\subfigs{\subfig{.5}{C2X}}{\subfig{.5}{C2A}}
+	
+	\begin{itemize}\itemfill
+		\item fit function: [0]*TMath::GammaDist($x$, $k/2$, 0, $\theta = 2$)
+		\item k - number degrees of freedom = NPlanes - 2
+		\item does not fit very well \ra incorrect errors of the individual points (planes)
+	\end{itemize}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Determination of the Errors}
+	
+	\textbf{\underline{1. General Scaling:}}\vspace*{1pt}
+		\begin{itemize}\itemfill
+			\item leave width of the distribution as free parameter in fit (indicator the errors)
+			\item adjust all errors by same factor until width converges to theoretical value of 1
+		\end{itemize}\vspace*{1ex}
+	\textbf{\underline{2. Individual Scaling:}}\vspace*{1pt}
+	\begin{itemize}\itemfill
+		\item set one plane under test (not included in fit)
+		\item iteratively adjust errors of the other planes
+	\end{itemize}
+	\subfigs{\subfig{.5}[r]{C2XN}}{\subfig{.5}[r]{C2AN}}\vspace*{-10pt}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Integration}
+\begin{frame}{Region and Range}
+
+	\only<1>{\fig[r]{.4}{I0}\vspace*{.1\textheight}}
+	\only<2>{\fig[r]{.4}{I1}\vspace*{.1\textheight}}
+	\only<3>{\fig[r]{.5}{I2}}
+	\only<4>{\fig[r]{.5}{I3}}
+	\only<5>{\fig[r]{.5}{I4}}
+	\only<6>{\fig[r]{.5}{I5}}
+	\only<7>{\fig[r]{.5}{I6}}
+	
+	
+	\begin{itemize}\itemfill
+		\item<2-> define signal region: one bunch wide (\SI{20}{\nano\second}) around the triggered signal
+		\item<4-> find the peak within the signal region by max value
+		\item<5-> signal: integrate asymmetrically around the peak (optimisation by SNR)
+		\item<6-> pedestal: same integration window in centre of pre-trigger bunch
+	\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Integration}
+	
+	\fig[r]{.5}{I7}
+	
+	\begin{itemize}\itemfill
+		\item integration performed on time corrected waveform 
+		\item single bin integral: ($w$) times the mean of the two values: $w\cdot(v1 + v2) / 2$
+		\item sum up the single integrals + interpolated edges to get the exact integration width
+		\item normalise by the width of the integral
+	\end{itemize}
+ 
+\end{frame}\section{Analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Event Cuts}
+\begin{frame}{Cuts}
+
+	\nicetab{ll}{ \good{Cut} & \good{Excluded Events} 														\\\hline
+	saturated						& saturated waveforms 	\\
+	pulser							& pulser (reference) events 	\\
+	event range					& first minute of the run due to various beam conditions 	\\
+	beam interruptions	& during rate changes of the beam due to beam interruption\\
+	pedestal sigma			& baseline offsets, strange waveforms 	\\
+	timing 							& wrong timing of the peak of triggered signal  	\\
+	bucket							& flat waveforms due to wrong trigger 	\\
+	aligned 						& Waveforms and Telescope are not aligned (event-wise)					\\
+	tracks							& not all telescope planes have exactly one cluster				\\
+	chi2 (x/y)					& badly fit tracks (\SI{>50}{\%\, quantile})							\\
+	track slope (x/y)		& large angles of the tracks (\SI{>2}{deg})								\\
+	fiducial						& not in selected (fiducial) area of the DUT							\\
+	}[Analysis cut flow.]\vspace*{-6ex}
+	
+% 	\begin{minipage}{.6\textwidth}
+% 		\begin{itemize}
+% 			\item cuts applied in order of the table
+% 			\item largest contribution usually by chi2, tracks and fiducial cuts
+% 		\end{itemize}
+% 	\end{minipage}\hfill
+% 	\begin{minipage}{.3\textwidth}
+% 		\fig[r]{.38}{CutPie}
+% 	\end{minipage}
+
+
+
+	
+\end{frame}
+

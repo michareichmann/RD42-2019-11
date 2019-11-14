@@ -1,0 +1,94 @@
+\section{Pulse Height Calibration}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Pixel Unit Cell}
+\begin{frame}{Pixel Unit Cell}
+
+	\fig{.5}{PUC}
+	
+	\begin{itemize}\itemfill
+		\item inject calibration signal ($\sim$\,vcal) through sensor into same circuit as real signals
+		\item shaping, amplification, threshold check
+		\item set amplification offset
+		\item convert to \SI{8}{bit} adc value with adjustable scale \ra readout
+	\end{itemize}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Trimming}
+\begin{frame}{ADC Calibration}
+    
+    
+    \subfigs{\only<1>{\subfig{.5}[r]{trim}[Threshold Map.]}\only<2>{\subfig{.5}[r]{s2020}}}{\only<1>{\subfig{.5}[r]{trimdist}[Threshold Distribution.]}\only<2>{\subfig{.5}[r]{s4040}}}
+
+    \begin{itemize}\itemfill 
+        \item<1-> trim all pixels to the same threshold
+        \item<2> means pixel start to become efficient at the tuned threshold
+    \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tuning and Calibration}
+\begin{frame}{ADC Calibration}
+	
+	
+	\vspace*{-10pt}
+	\only<1>{\fig[r]{.5}{AdcCal}[ADC calibration for single pixel.]}
+	\only<2>{\fig[r]{.5}{AdcCalFit}[ADC calibration for single pixel with error function fit.]}
+
+	\begin{itemize}\itemfill 
+		\item<1-> measure adc values for calibration pulses with different vcal
+		\item<1-> adc follows error function and saturates for high vcal
+		\item<2> fit every pixel and save fit parameters
+		\item<2> adjust adc offset and range with DACs of the chip
+	\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{ADC Calibration - Temperature Dependence}
+    
+    \vspace*{-3ex}
+    \fig[r]{.5}{tdep}[Read back VCAL inducing test-pulses with VCAL 200.]
+    \vspace*{-2ex}
+
+    \begin{itemize}\itemfill 
+        \item readout chip heats up quite significantly while being in use
+        \item adc calibration strongly temperature dependent 
+        \item inducing test pulses with VCAL 200 at room temperature
+        \begin{itemize}
+          \item converting the measured ADC back to VCAL using the calibration
+          \item VCAL only approaches the correct value after the chip reaches the correct temperature
+        \end{itemize}
+        \item \ra always perform calibration after heating up the chip!
+    \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Vcal Calibration (Silicon)}
+	
+	\def\d{.295}
+	\only<1>{
+		\begin{minipage}{.48\textwidth}
+			\subfigs{\subfig{\d}{Zn}[Zn target.]}{\subfig{\d}{Mo}[Mo target.]}\vspace*{9.1ex}
+		\end{minipage}
+		\begin{minipage}{.48\textwidth}
+			\subfigs{\subfig{\d}{Ag}[Ag target.]}{\subfig{\d}{Sn}[Sn target.]}\vspace*{9.1ex}
+		\end{minipage}}
+	\only<2>{\fig{.4}{VcalCal}[Vcal Calibration.]}
+	\only<3>{\subfigs{\subfig{.439}[r]{VS}[Vcal slopes.]}{\subfig{.439}[r]{VO}[Vcal offsets.]}\vspace*{-2ex}}
+	
+	\begin{itemize}\itemfill 
+		\item<1-> measure energy spectra of $K_{\alpha}$ lines of four metal targets using ADC-calibration
+		\item<2-> linear dependence of energy [e] and vcal 
+		\item<2-> fit $K_{\alpha}$ points with straight line (similar for each chip)
+		\item<2-> impossible to do calibration with diamond (energy too low)
+		\begin{itemize}
+			\item<3-> use general values from silicon: $\z{e} = 46.5\cdot vcal$
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}

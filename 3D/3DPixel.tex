@@ -1,0 +1,36 @@
+% BEGIN PREAMBEL
+\documentclass[9pt, xcolor=dvipsnames, table]{beamer}
+\usepackage[british]{babel}
+
+\input{extrapackages}
+\input{settings}
+
+\input{newcommands}
+\input{HeadLine}
+\input{FootLine}
+\input{SectionPage}
+\input{TitlePageSettings}
+
+\title[3D Pulse Height]{Pulse Height Analysis of 3D pCVD Diamond Detectors}
+\subtitle{RD42 Meeting - Grenoble 2019}
+\titlegraphic{3DTel1}
+% END PREAMBEL
+
+\begin{document}
+
+\include{TitlePage}
+\include{TableOfContents}
+
+\include{Motivation}
+\include{3DPix}
+\include{newdet}
+\include{Setup}
+\include{Calibration}
+\include{Ana}
+\include{Results}
+
+\include{Conclusion}
+\include{DelFin} % FINAL PAGE
+\include{Backup}
+
+\end{document} % DOCUMENT END
