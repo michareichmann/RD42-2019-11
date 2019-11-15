@@ -20,19 +20,54 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Rate Measurements}
-\begin{frame}{S129}
+\begin{frame}{S129 - Mean Pulse Heights}
 
 	\vspace*{-2ex}
-	\only<1>{\fig[r]{.5}{S129EvoF}}
-	\only<2>{\fig[r]{.5}{S129EvoZ}}
-	\only<3>{\fig[r]{.5}{S129STD}}\vspace*{-1ex}
+	\only<1>{\fig[r]{.5}{meanPh}}
+	\only<2>{\fig[r]{.5}{stds}}
 	
 	\begin{itemize}\itemfill
-		\item<1-> every point the mean of a whole rate scan
-		\item<1-> very high points have no attenuator
-		\item<1-> first two points have a change in amplifier
-		\item<2-> most points very stable over time but some fluctuate (maybe DRS4 issue)
-		\item<3-> standard deviation in general below \SI{.5}{\%}
+		\item every point the mean of a whole rate scan
+		\item last two points have a different amplifier
+		\item most points very stable over time but some fluctuate
+		\item<2-> standard deviation in general below \SI{.5}{\%} of the mean pulse height
+	\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{S129 - Pulse Heights}
+
+	\vspace*{-2ex}
+	\fig[r]{.5}{phs}
+	
+	\begin{itemize}\itemfill
+		\item all rate scans almost show no dependence on rate
+		\item \bad{BUT:} the highest rate point is consistently lower by \SI{1}{\%}
+	\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{S129 - Mean Pedestals}
+
+	\vspace*{-2ex}
+	\fig[r]{.5}{meanPeds}
+	
+	\begin{itemize}\itemfill
+		\item every point the mean pedestal whole rate scan
+		\item if pedestal is not around zero \ra indicator for no voltage calibration in the DRS4 (digitiser)
+		\item runs without voltage calibration match the runs with inconsistent pulse height
+		\item except for scan 7 in Jul17 \ra does not mean that voltage calibration was correct
+	\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{S129 - Pedestals}
+
+	\vspace*{-2ex}
+	\fig[r]{.5}{peds}
+	
+	\begin{itemize}\itemfill
+		\item very consistent behaviour for all scans
 	\end{itemize}
 
 \end{frame}

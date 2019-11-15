@@ -1,27 +1,6 @@
 \section{Analysis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Alignment}
-\begin{frame}{Alignment}
-
-	\only<1>{\fig{.4}{PA}}
-	\only<2>{\fig{.4}{FA}}
-
-	\begin{itemize}\itemfill
-		\item<1-> assume the same error for all planes: $\frac{2.5}{\sqrt{12}}\,\cdot$ pixel dimension
-		\item<1-> set errors of p1 to 0 (anchor \ra remains untouched)
-		\item<1-> first coarse \textbf{pre-alignment} by connecting the outer planes with a straight line
-		\begin{itemize}
-			\item<1-> move inner planes by mean of the residual distribution\vspace*{5pt}
-		\end{itemize}
-		\item<2->then \textbf{fine alignment} by fitting a straight line through all planes
-		\begin{itemize}
-			\item<2-> keep p1 fixed and iteratively translate and rotate the other planes according to residuals 
-		\end{itemize}
-	\end{itemize}
-	
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Individual Plane Errors}
 \begin{frame}{Theoretical Distribution}
 
 	\textbf{\underline{Chi-squared distribution:}}
@@ -38,32 +17,16 @@
 	\end{itemize}
 	
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Distribution after Alignment}
-
-	\subfigs{\subfig{.5}{C2X}}{\subfig{.5}{C2A}}
-	
-	\begin{itemize}\itemfill
-		\item fit function: [0]*TMath::GammaDist($x$, $k/2$, 0, $\theta = 2$)
-		\item k - number degrees of freedom = NPlanes - 2
-		\item does not fit very well \ra incorrect errors of the individual points (planes)
-	\end{itemize}
-	
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Determination of the Errors}
+
+	\subfigs
+		{\only<1>{\subfig{.5}{C2X}}\only<2>{\subfig{.5}[r]{C2XN}}}
+		{\only<1>{\subfig{.5}{C2A}}\only<2>{\subfig{.5}[r]{C2AN}}}
 	
-	\textbf{\underline{1. General Scaling:}}\vspace*{1pt}
-		\begin{itemize}\itemfill
-			\item leave width of the distribution as free parameter in fit (indicator the errors)
-			\item adjust all errors by same factor until width converges to theoretical value of 1
-		\end{itemize}\vspace*{1ex}
-	\textbf{\underline{2. Individual Scaling:}}\vspace*{1pt}
 	\begin{itemize}\itemfill
-		\item set one plane under test (not included in fit)
-		\item iteratively adjust errors of the other planes
+		\item iteratively adjust tracking errors of each plane until $\upchi^2$ matches the theoretical distribution
 	\end{itemize}
-	\subfigs{\subfig{.5}[r]{C2XN}}{\subfig{.5}[r]{C2AN}}\vspace*{-10pt}
 	
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,7 +61,7 @@
 		\item normalise by the width of the integral
 	\end{itemize}
  
-\end{frame}\section{Analysis}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAME 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Event Cuts}
 \begin{frame}{Cuts}
